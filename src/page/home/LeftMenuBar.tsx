@@ -1,5 +1,6 @@
 import * as React from 'react'
-
+import {Menu} from 'antd'
+ 
 export interface Props {
 
 }
@@ -7,9 +8,12 @@ export interface Props {
 class LeftMenuBar extends React.Component<Props, any>{
     render() {
         return (
-            <div>
+            <Menu 
+                theme="dark"
+                mode="inline"
+            >
                 
-            </div>
+            </Menu>
         )
     }
 }
