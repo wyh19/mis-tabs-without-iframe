@@ -1,9 +1,16 @@
 import * as React from 'react'
 
-class Home extends React.Component{
-    render(){
-        return <div>Home</div>
-    }
+export interface Props {
+
 }
 
+class Home extends React.Component<Props, any>{
+    render() {
+        return (
+            <div>
+
+            </div>
+        )
+    }
+}
 export default Home
