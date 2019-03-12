@@ -4,15 +4,15 @@ import { observable, action } from 'mobx'
 import { authApi } from '../api'
 
 export interface IAuthStore {
-    operatorInfo: Object,
-    menus: Array<Object>,
+    operatorInfo: any,
+    menus: Array<any>,
     login: Function,
     getOperatorInfo: Function,
 }
 
 class AuthStore implements IAuthStore {
-    @observable operatorInfo: Object
-    @observable menus: Array<Object>
+    @observable operatorInfo: any
+    @observable menus: Array<any>
 
     constructor() {
         this.operatorInfo = {}
