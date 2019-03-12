@@ -12,6 +12,8 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const tsImportPluginFactory = require('ts-import-plugin');
+
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -160,6 +162,16 @@ module.exports = {
                                 options: {
                                     // disable type checker - we will use it in fork plugin
                                     transpileOnly: true,
+                                    getCustomTransformers: () => ({
+                                        before: [tsImportPluginFactory({
+                                            libraryName: 'antd',
+                                            libraryDirectory: 'lib',
+                                            style: true
+                                        })]
+                                    }),
+                                    compilerOptions: {
+                                        module: 'es2015'
+                                    }
                                 },
                             },
                         ],
@@ -211,15 +223,15 @@ module.exports = {
                                 },
                             },
                             {
-                                loader:'resolve-url-loader'
+                                loader: 'resolve-url-loader'
                             },
                             {
                                 loader: 'sass-loader',
                                 options: {
                                     outputStyle: 'expanded',
                                     sourceMap: true,
-                                    includePaths:[
-                                        path.resolve(__dirname,'../node_modules/compass-mixins/lib')
+                                    includePaths: [
+                                        path.resolve(__dirname, '../node_modules/compass-mixins/lib')
                                     ]
                                 }
                             }
