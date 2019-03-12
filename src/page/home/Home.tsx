@@ -20,7 +20,7 @@ class Home extends React.Component<Props, any>{
                     >
 
                     </Layout.Sider>
-                    <Layout.Content>
+                    <Layout.Content >
 
                     </Layout.Content>
                 </Layout>

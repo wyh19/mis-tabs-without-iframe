@@ -1,14 +1,22 @@
 import { observable, action } from 'mobx'
+import { authApi } from '../api'
 
 class AuthStore {
-    @observable userInfo: object
+    @observable operatorInfo: object
 
     constructor() {
-        this.userInfo = {}
+        this.operatorInfo = {}
     }
 
     @action login = () => {
 
+    }
+
+    @action getOperatorInfo = () => {
+        authApi.getOperatorInfo()
+            .then(res => {
+                
+            })
     }
 }
 

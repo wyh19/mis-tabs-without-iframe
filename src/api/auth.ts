@@ -1,15 +1,14 @@
 import axios from 'axios'
 
-const base = '/api/auth'
 
 export default {
     login: () => {
-        return axios.post(`${base}/login`)
+        return axios.post('/api/auth/login')
     },
     logout: () => {
 
     },
-    getUserInfo: () => {
-
+    getOperatorInfo: () => {
+        return axios.get('/api/auth/operator')
     }
 }
