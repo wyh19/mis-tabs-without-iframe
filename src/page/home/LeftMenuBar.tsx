@@ -1,18 +1,25 @@
 import * as React from 'react'
-import {Menu} from 'antd'
- 
-export interface Props {
+import { Menu } from 'antd'
 
+export interface IMenuData {
+    id: number | string,
+    name: string,
+    parentId: number | string,
+    url: string
 }
 
-class LeftMenuBar extends React.Component<Props, any>{
+export interface ILeftMenuBarProps {
+    menuData: Array<IMenuData>
+}
+
+class LeftMenuBar extends React.Component<ILeftMenuBarProps, any>{
     render() {
         return (
-            <Menu 
+            <Menu
                 theme="dark"
                 mode="inline"
             >
-                
+
             </Menu>
         )
     }

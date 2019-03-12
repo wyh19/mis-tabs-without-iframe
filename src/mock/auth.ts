@@ -1,6 +1,7 @@
 import * as Mock from 'mockjs'
+import { IMenuData, IOperatorInfo } from '../store/auth'
 
-const menus = [
+const menus: Array<IMenuData> = [
     {
         id: 1,
         name: '基础管理',
@@ -27,18 +28,18 @@ const menus = [
     }
 ]
 
-const operatorInfo = {
+const operatorInfo: IOperatorInfo = {
     name: 'wyh19'
 
 }
 
-Mock.mock('/api/auth/login', 'post', options => {
-
+Mock.mock('/api/auth/login', 'post', (options: any) => {
+    console.log(options)
     return { code: 0, msg: 'success', result: {} }
 })
 
-Mock.mock('/api/auth/operator', 'get', options => {
-
+Mock.mock('/api/auth/operator', 'get', (options: any) => {
+    console.log(options)
     return {
         code: 0,
         msg: 'success',
