@@ -1,12 +1,19 @@
 import * as React from 'react'
 import { Layout } from 'antd'
+import { inject, observer } from 'mobx-react'
 import * as styles from './Home.scss'
+import { IAuthStore } from '../../store/auth'
 
-export interface Props {
-
-}
-
-class Home extends React.Component<Props, any>{
+@inject('store') @observer
+class Home extends React.Component<any, any>{
+    store: IAuthStore;
+    constructor(props: any) {
+        super(props)
+        this.store = props.store.authStore
+    }
+    componentDidMount() {
+        this.store.getOperatorInfo()
+    }
     render() {
         return (
             <Layout className={styles.home}>

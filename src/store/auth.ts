@@ -1,7 +1,13 @@
 import { observable, action } from 'mobx'
 import { authApi } from '../api'
 
-class AuthStore {
+export interface IAuthStore {
+    operatorInfo: object,
+    login: Function,
+    getOperatorInfo: Function,
+}
+
+class AuthStore implements IAuthStore {
     @observable operatorInfo: object
 
     constructor() {
@@ -15,7 +21,7 @@ class AuthStore {
     @action getOperatorInfo = () => {
         authApi.getOperatorInfo()
             .then(res => {
-                
+
             })
     }
 }
