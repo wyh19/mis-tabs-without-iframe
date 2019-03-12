@@ -27,7 +27,7 @@ const menus = [
     }
 ]
 
-const opretorInfo = {
+const operatorInfo = {
     name: 'wyh19'
 
 }
@@ -43,7 +43,7 @@ Mock.mock('/api/auth/operator', 'get', options => {
         code: 0,
         msg: 'success',
         result: {
-            opretorInfo,
+            operatorInfo,
             menus
         }
     }

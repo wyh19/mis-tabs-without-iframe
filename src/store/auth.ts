@@ -1,14 +1,18 @@
+process.env.USE_MOCK && require('../mock/auth')
+
 import { observable, action } from 'mobx'
 import { authApi } from '../api'
 
 export interface IAuthStore {
-    operatorInfo: object,
+    operatorInfo: Object,
+    menus: Array<Object>,
     login: Function,
     getOperatorInfo: Function,
 }
 
 class AuthStore implements IAuthStore {
-    @observable operatorInfo: object
+    @observable operatorInfo: Object
+    @observable menus: Array<Object>
 
     constructor() {
         this.operatorInfo = {}
@@ -20,8 +24,9 @@ class AuthStore implements IAuthStore {
 
     @action getOperatorInfo = () => {
         authApi.getOperatorInfo()
-            .then(res => {
-
+            .then((res: any) => {
+                this.operatorInfo = res.operatorInfo
+                this.menus = res.menus
             })
     }
 }
