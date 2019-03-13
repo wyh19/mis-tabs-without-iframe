@@ -3,7 +3,7 @@ import { Layout } from 'antd'
 import { inject, observer } from 'mobx-react'
 import * as styles from './Home.scss'
 import { IAuthStore } from '../../store/auth'
-import LeftMenuBar,{ILeftMenuBarProps} from './LeftMenuBar'
+import LeftMenuBar from './LeftMenuBar'
 
 @inject('store') @observer
 class Home extends React.Component<any, any>{
@@ -26,7 +26,7 @@ class Home extends React.Component<any, any>{
                         collapsible
                         width={220}
                     >
-                        <LeftMenuBar />
+                        <LeftMenuBar menuData={this.store.menus}/>
                     </Layout.Sider>
                     <Layout.Content >
 
