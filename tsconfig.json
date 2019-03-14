@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "paths": { "*": ["types/*"] },
         "experimentalDecorators": true,
         "baseUrl": ".",
         "outDir": "build/dist",
