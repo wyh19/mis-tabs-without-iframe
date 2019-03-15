@@ -10,8 +10,8 @@ export interface ILeftMenuBarProps {
 
 @immutableRenderDecorator
 class LeftMenuBar extends React.Component<ILeftMenuBarProps, any>{
-    mapMenu = () => {
-
+    mapMenu = (menuData: Array<IMenuData>) => {
+        return <div>1</div>
     }
     render() {
         const { menuData } = this.props
@@ -21,7 +21,7 @@ class LeftMenuBar extends React.Component<ILeftMenuBarProps, any>{
                 mode="inline"
             >
                 {
-                    menuData?this.mapMenu(menuData):null
+                    menuData ? this.mapMenu(menuData) : null
                 }
             </Menu>
         )
