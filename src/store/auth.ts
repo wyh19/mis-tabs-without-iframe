@@ -11,7 +11,8 @@ export interface IMenuData {
     id: number | string,
     name: string,
     parentId: number | string,
-    url: string
+    url: string,
+    children?: Array<IMenuData>
 }
 
 export interface IAuthStore {
@@ -33,11 +34,30 @@ class AuthStore implements IAuthStore {
 
     }
 
+    private formatMenus = (menus: Array<IMenuData>): Array<IMenuData> => {
+        let result: Array<IMenuData> = []
+        for (let i = 0; i < menus.length; i++) {
+            if (!menus[i].parentId || menus[i].parentId == 0) {
+                menus[i].children = []
+                result.push(menus[i])
+            }
+        }
+        for (let i = 0; i < result.length; i++) {
+            let level1 = result[i]
+            for (let j = 0; j < menus.length; j++) {
+                if (level1.id === menus[j].parentId && level1.children) {
+                    level1.children.push(menus[j])
+                }
+            }
+        }
+        return result
+    }
+
     @action getOperatorInfo = () => {
         authApi.getOperatorInfo()
             .then((res: any) => {
                 this.operatorInfo = res.operatorInfo
-                this.menus = res.menus
+                this.menus = this.formatMenus(res.menus)
             })
     }
 }

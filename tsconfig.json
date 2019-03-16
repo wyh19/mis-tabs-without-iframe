@@ -4,7 +4,7 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "outDir": "build/dist",
-        "module": "esnext",
+        "module": "ESNext",
         "target": "es5",
         "lib": [
             "es6",
