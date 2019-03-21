@@ -11,10 +11,16 @@ class Home extends React.Component<any, any>{
     constructor(props: any) {
         super(props)
         this.store = props.store.authStore
+        this.state = {
+            collapsed: false
+        }
     }
     componentDidMount() {
         this.store.getOperatorInfo()
     }
+    onCollapse = (collapsed:any) => {
+        this.setState({ collapsed });
+      }
     render() {
         return (
             <Layout className={styles.home}>
@@ -25,8 +31,10 @@ class Home extends React.Component<any, any>{
                     <Layout.Sider
                         collapsible
                         width={220}
+                        collapsed={this.state.collapsed}
+                        onCollapse={this.onCollapse}
                     >
-                        <LeftMenuBar menuData={this.store.menus}/>
+                        <LeftMenuBar menuData={this.store.menus} />
                     </Layout.Sider>
                     <Layout.Content >
 
