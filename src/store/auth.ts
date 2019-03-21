@@ -34,6 +34,9 @@ class AuthStore implements IAuthStore {
 
     }
 
+    /**
+     * 格式化Menus数据（无children字段）为嵌套的（目前是两级，应该考虑升级为无限嵌套）
+     */
     private formatMenus = (menus: Array<IMenuData>): Array<IMenuData> => {
         let result: Array<IMenuData> = []
         for (let i = 0; i < menus.length; i++) {
