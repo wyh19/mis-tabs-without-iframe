@@ -39,7 +39,7 @@ class LeftMenuBar extends React.Component<ILeftMenuBarProps, any>{
                 mode="inline"
             >
                 {
-                    menuData ? this.mapMenus(menuData) : null
+                    menuData && this.mapMenus(menuData)
                 }
             </Menu>
         )
